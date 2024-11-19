@@ -24,9 +24,7 @@ const getUser = async(username) =>{
                             <li>${data.public_repos}<strong>Repos</strong></li>
                         </ul>
                         <div id="repos">
-                            <a href="${data.repos_url}" class="repo" target="_blank">Repo1</a>
-                            <a href="#" class="repo" target="_blank">Repo2</a>
-                            <a href="#" class="repo" target="_blank">Repo3</a>
+                            
                         </div>
                     </div>
                 </div>`
@@ -45,6 +43,7 @@ const getRepos = async(username) => {
         (item) => {
             console.log(item);
             const elem = document.createElement("a");
+            elem.classList.add("repo");
             elem.href = item.html_url;
             elem.target = "_blank";
             elem.textContent = item.name;
@@ -53,3 +52,8 @@ const getRepos = async(username) => {
         }
     )
 }
+
+/*
+    <a href="#" class="repo" target="_blank">Repo1</a>
+    <a href="#" class="repo" target="_blank">Repo2</a>
+    <a href="#" class="repo" target="_blank">Repo3</a> */
