@@ -1,5 +1,6 @@
 const APIURL = "https://api.github.com/users/" 
 const main = document.querySelector('#main');
+const searchbox = document.querySelector("#search");
 
 const getUser = async(username) =>{
     const response = await fetch(APIURL + username);
@@ -52,6 +53,18 @@ const getRepos = async(username) => {
         }
     )
 }
+
+const formsubmit = () => {
+    if (searchbox.value != ""){
+        getUser(searchbox.value);
+        searchbox.value = "";
+    }
+    return false;
+}
+
+searchbox.addEventListener('focusout', (e) => {
+    formsubmit();
+});
 
 /*
     <a href="#" class="repo" target="_blank">Repo1</a>
