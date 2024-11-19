@@ -11,27 +11,45 @@ const getUser = async(username) =>{
 
                     <!-- left box -->
                     <div class="left-box">
-                        <img src="${data.avatar_ur}" alt="Florin Pop" class="image">
+                        <img src="${data.avatar_url}" alt="Florin Pop" class="image">
                     </div>
 
                     <!-- right box -->
                     <div class="user-info">
-                        <h2 class="name">Name</h2>
-                        <p class="bio">Bio</p>
+                        <h2 class="name">${data.name}</h2>
+                        <p class="bio">${data.bio || 'No bio available'}</p>
                         <ul class="info">
-                            <li>### <strong>Followers</strong></li>
-                            <li>## <strong>Following</strong></li>
-                            <li>### <strong>Repos</strong></li>
+                            <li>${data.followers}<strong>Followers</strong></li>
+                            <li>${data.following}<strong>Following</strong></li>
+                            <li>${data.public_repos}<strong>Repos</strong></li>
                         </ul>
                         <div id="repos">
-                            <a href="#" class="repo" target="_blank">Repo1</a>
+                            <a href="${data.repos_url}" class="repo" target="_blank">Repo1</a>
                             <a href="#" class="repo" target="_blank">Repo2</a>
                             <a href="#" class="repo" target="_blank">Repo3</a>
                         </div>
                     </div>
                 </div>`
-                
-                main.innerHTML = card;
+
+      main.innerHTML = card;
+      getRepos(username);
 }
 
-getUser("NoorFatima-developer");
+getUser("pro6rammerboy");
+
+const getRepos = async(username) => {
+    const repos = document.querySelector("#repos")
+    const response = await fetch(APIURL + username + '/repos');
+    const data = await response.json();
+    data.forEach(
+        (item) => {
+            console.log(item);
+            const elem = document.createElement("a");
+            elem.href = item.html_url;
+            elem.target = "_blank";
+            elem.textContent = item.name;
+            repos.appendChild(elem);
+            console.log(repos);
+        }
+    )
+}
