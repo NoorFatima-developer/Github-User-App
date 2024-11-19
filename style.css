@@ -61,8 +61,6 @@ body {
     margin-bottom: -5px; /* Space below the bio */
 }
 
-
-
 #search {
     border-radius: 5px;
     padding: 10px 10px;
@@ -72,6 +70,7 @@ body {
 
 #repos {
     margin-top: -5px;
+    font-size: 10px;
 }
 
 .repo {
