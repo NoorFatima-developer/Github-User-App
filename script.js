@@ -8,6 +8,7 @@ const getUser = async(username) =>{
     const data = await response.json();
     console.log(data);   
     const card = `<div class="card">
+
                     <!-- left box -->
                     <div class="left-box">
                         <img src="${data.avatar_ur}" alt="Florin Pop" class="image">
@@ -30,7 +31,7 @@ const getUser = async(username) =>{
                     </div>
                 </div>`
                 
-    main.innerHTML = card;
+                main.innerHTML = card;
 }
 
 getUser("NoorFatima-developer");
