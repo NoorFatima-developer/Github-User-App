@@ -52,7 +52,7 @@ const getRepos = async(username) => {
             console.log(repos);
         }
     )
-}
+}'''
 
 const formsubmit = () => {
     if (searchbox.value != ""){
