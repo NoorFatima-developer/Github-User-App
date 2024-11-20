@@ -3,9 +3,7 @@ const main = document.querySelector('#main');
 const searchbox = document.querySelector("#search");
 
 const getUser = async(username) =>{
-
     const response = await fetch(APIURL + username);
-            
     console.log(response);
     // convert data into JSON(because data is in string format so need to convert it..)
     const data = await response.json();
@@ -36,14 +34,14 @@ const getUser = async(username) =>{
       getRepos(username);
 }
 
-getUser("pro6rammerboy");
+getUser("NoorFatima-developer");
 
 const getRepos = async(username) => {
     const repos = document.querySelector("#repos")
     const response = await fetch(APIURL + username + '/repos');
     const data = await response.json();
     data.forEach(
-        item => {
+        (item) => {
             console.log(item);
             const elem = document.createElement("a");
             elem.classList.add("repo");
